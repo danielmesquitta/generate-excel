@@ -1,5 +1,5 @@
 {
-  "name": "koa-prisma",
+  "name": "generate-excel",
   "version": "1.0.0",
   "main": "index.js",
   "author": "Daniel Mesquita <danielmesquitta123@gmail.com>",
