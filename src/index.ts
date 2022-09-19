@@ -1,3 +1,3 @@
-import { generateExcel } from '~/scripts';
+import { generateDoctorsExcel, generateUsersExcel } from '~/scripts';
 
-generateExcel().then(() => process.exit(0));
+generateUsersExcel().then(() => process.exit(0));

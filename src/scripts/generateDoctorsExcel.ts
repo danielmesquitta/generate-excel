@@ -3,7 +3,7 @@ import excelJS from 'exceljs';
 import { tmpFolderPath } from '~/configs';
 import { api } from '~/services';
 
-const generateExcel = async () => {
+const generateDoctorsExcel = async () => {
   const workbook = new excelJS.Workbook();
 
   const worksheet = workbook.addWorksheet('Médicos');
@@ -54,6 +54,11 @@ const generateExcel = async () => {
       header: 'Local de atendimento',
       key: 'clinic',
       width: 80,
+    },
+    {
+      header: 'Andar ou observação do local',
+      key: 'clinicComplement',
+      width: 40,
     },
     {
       header: 'Sobre (descrição)',
@@ -156,9 +161,7 @@ const generateExcel = async () => {
       });
 
       ['clinic'].forEach((key) => {
-        doctor[key] = `${doctor[key]?.name || ''} ${
-          doctor[`${key}Complement`] || ''
-        }`;
+        doctor[key] = doctor[key]?.name || '';
       });
 
       ['schedule'].forEach((key) => {
@@ -214,6 +217,7 @@ const generateExcel = async () => {
         'whatsapp',
         'specialties',
         'clinic',
+        'clinicComplement',
         'about',
         'links',
         'importantObservations',
@@ -234,9 +238,9 @@ const generateExcel = async () => {
     })
   );
 
-  await workbook.xlsx.writeFile(`${tmpFolderPath}/medicos.xlsx`);
+  await workbook.xlsx.writeFile(`${tmpFolderPath}/Médicos.xlsx`);
 
   console.info('Done!');
 };
 
-export default generateExcel;
+export default generateDoctorsExcel;
